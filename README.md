@@ -159,7 +159,7 @@ Reward + Experience Replay
 
 A more detailed explanation is available in:
 
-[**System Architecture →**](docs/architecture.md)
+[**System Architecture →**](doc/architecture.md)
 
 ---
 
@@ -266,7 +266,7 @@ The complete research architecture extends this process with delayed outcomes, s
 
 Read more:
 
-[**How the Agent Learns →**](docs/learning-system.md)
+[**How the Agent Learns →**](doc/learning-system.md)
 
 
 ---
@@ -301,8 +301,8 @@ The public source is designed to show how the core reinforcement-learning workfl
 | --- | --- |
 | [System Architecture](doc/architecture.md) | Full architectural overview of the current research system |
 | [How the Agent Learns](doc/learning-system.md) | Reinforcement-learning and DDQN learning process |
-| `docs/memory-system.md` | Memory and specialised replay architecture *(in progress)* |
-| `docs/limitations.md` | Research scope, limitations and risk considerations *(planned)* |
+| `doc/memory-system.md` | Memory and specialised replay architecture *(in progress)* |
+| `doc/limitations.md` | Research scope, limitations and risk considerations *(planned)* |
 | [Public Learning Source](src/AdaptiveDQN_MT5_LearningEdition.mq5) | Simplified functional MQL5 implementation |
 
 ---
@@ -408,7 +408,7 @@ Adaptive-DDQN-MT5/
 ├── src/
 │   └── AdaptiveDQN_MT5_LearningEdition.mq5
 │
-├── docs/
+├── doc/
 │   ├── architecture.md
 │   ├── learning-system.md
 │   ├── memory-system.md
