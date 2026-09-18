@@ -205,33 +205,3 @@ For broader research limitations, see:
 
 [Research Scope & Limitations](../doc/limitations.md)
 
----
-
-## Planned Asset Reports
-
-As testing progresses, individual asset reports may be added:
-
-```text
-tested_assets/
-├── README.md
-├── XAUUSD.md
-├── EURUSD.md
-├── GBPUSD.md
-└── ...
-```
-
-Each report can contain:
-
-```text
-Test Configuration
-Historical Period
-Equity Curve
-Drawdown
-Basket Statistics
-Learning Behaviour
-Notable Failure Cases
-Regime Behaviour
-Observations
-```
-
-The aim is to make asset testing progressively more reproducible and comparable.
