@@ -12,65 +12,8 @@ The objective is not simply to predict the next price movement. The agent also a
 
 ## 1. High-Level Architecture
 
-```text
-                         MARKET ENVIRONMENT
-                                │
-                                ▼
-                       STATE CONSTRUCTION
-                                │
-          ┌─────────────┬───────┼───────┬─────────────┐
-          ▼             ▼       ▼       ▼             ▼
-       Basket        Indicator  Vol.  Structure    Zone/Candle
-       State          State     State    State        State
-          │             │       │       │             │
-          └─────────────┴───────┴───────┴─────────────┘
-                                │
-                                ▼
-                      BRANCH ENCODER NETWORKS
-                                │
-                                ▼
-                         FEATURE FUSION
-                                │
-                                ▼
-                     DOUBLE DUELING DQN
-                          ┌─────┴─────┐
-                          ▼           ▼
-                     State Value   Advantage
-                          └─────┬─────┘
-                                ▼
-                    Q(HOLD) / Q(BUY) / Q(SELL)
-                                │
-                                ▼
-                       DECISION SUPPORT
-                 ┌──────────────┼──────────────┐
-                 ▼              ▼              ▼
-             Q-Memory       Historical      Danger /
-                              Memory        DD Memory
-                 └──────────────┼──────────────┘
-                                ▼
-                       RISK & ACTION GATES
-                                │
-                                ▼
-                        TRADE EXECUTION
-                                │
-                                ▼
-                      MARKET CONSEQUENCE
-                                │
-                                ▼
-                     REWARD / TRANSITION
-                                │
-                    ┌───────────┴───────────┐
-                    ▼                       ▼
-              EXPERIENCE REPLAY       LONG-TERM MEMORY
-                    │                       │
-                    └───────────┬───────────┘
-                                ▼
-                          NETWORK UPDATE
-                                │
-                                └──────────────► NEXT DECISION
-```
+![Uploading image.png…]()
 
----
 
 ## 2. Design Philosophy
 
