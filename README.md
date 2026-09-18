@@ -299,8 +299,8 @@ The public source is designed to show how the core reinforcement-learning workfl
 
 | Section | Description |
 | --- | --- |
-| [System Architecture](docs/architecture.md) | Full architectural overview of the current research system |
-| [How the Agent Learns](docs/learning-system.md) | Reinforcement-learning and DDQN learning process |
+| [System Architecture](doc/architecture.md) | Full architectural overview of the current research system |
+| [How the Agent Learns](doc/learning-system.md) | Reinforcement-learning and DDQN learning process |
 | `docs/memory-system.md` | Memory and specialised replay architecture *(in progress)* |
 | `docs/limitations.md` | Research scope, limitations and risk considerations *(planned)* |
 | [Public Learning Source](src/AdaptiveDQN_MT5_LearningEdition.mq5) | Simplified functional MQL5 implementation |
