@@ -115,7 +115,6 @@ The current research architecture supplements learned action values with histori
 
 ## System Architecture
 
-![Adaptive-DDQN-MT5 System Architecture](assets/system-architecture.png)
 
 At a high level, the current research system follows:
 
@@ -268,6 +267,7 @@ The complete research architecture extends this process with delayed outcomes, s
 Read more:
 
 [**How the Agent Learns →**](docs/learning-system.md)
+
 
 ---
 
