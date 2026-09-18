@@ -12,7 +12,9 @@ The objective is not simply to predict the next price movement. The agent also a
 
 ## 1. High-Level Architecture
 
-![Uploading image.png…]()
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/41c7bd77-a75b-496d-85b6-b56dce50be7b" />
+
+
 
 
 ## 2. Design Philosophy
