@@ -47,6 +47,22 @@ The broader research problem is to study whether an agent can learn:
 
 ---
 
+## Why I Shared This Project
+
+This project started as a personal experiment in applying reinforcement learning and neural networks to trading decisions inside MetaTrader 5.
+
+I previously ran the system on a demo account across different markets and trading frequencies, but that historical record was lost when the demo-server environment became unavailable. Because of that, I do not use those earlier results as evidence of performance here.
+
+I decided to share the project mainly because I am interested in a broader question:
+
+> **How can neural networks contribute meaningfully to trading decisions, rather than simply being added on top of a conventional strategy?**
+
+The current implementation is still heavily influenced by a **grid / basket-based execution framework**, so its use of reinforcement learning remains constrained by that structure.
+
+I therefore see this repository as an ongoing research project rather than a finished trading system, and I am particularly interested in alternative ideas for state design, reward functions, action spaces, memory systems and ways of combining neural models with conventional risk controls.
+
+---
+
 ## Core Research Concepts
 
 ### 🧠 Native Neural Network
