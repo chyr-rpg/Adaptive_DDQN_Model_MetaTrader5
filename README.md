@@ -62,6 +62,32 @@ The current implementation is still heavily influenced by a **grid / basket-base
 I therefore see this repository as an ongoing research project rather than a finished trading system, and I am particularly interested in alternative ideas for state design, reward functions, action spaces, memory systems and ways of combining neural models with conventional risk controls.
 
 ---
+## Public vs. Research Edition
+
+The source code published in this repository is a **Learning Edition** designed
+to demonstrate the core reinforcement-learning workflow in a readable and
+reproducible form.
+
+My current private research implementation is substantially more complex and
+includes additional components such as:
+
+- Double DQN and target-network learning
+- dueling value / advantage architecture
+- multiple feature encoders
+- regime-aware model selection
+- specialized replay and memory systems
+- drawdown and danger-state memory
+- additional basket and risk-management logic
+- model persistence and decision-support mechanisms
+
+The public version is therefore **not a line-for-line release of the latest
+research system**.
+
+The full implementation remains private while the architecture continues to
+evolve. Selected access may be considered for academic, technical or
+professional collaboration.
+
+---
 
 ## Core Research Concepts
 
