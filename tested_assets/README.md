@@ -29,7 +29,7 @@ The current repository contains results for three markets:
 | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | [EURUSD](EURUSD_M5/) | FX | M5 | 2026-07-01 → 2026-09-19 | $47,274.20 | 47.27% | 12.36% | 1.91 | 3.67 | 335 |
 | [SP500](SP500_M15/) | Equity Index | M15 | 2026-07-01 → 2026-09-19 | $3,455.70 | 3.46% | 3.54% | 2.25 | 1.32 | 52 |
-| [XAUUSD](XAUUSD_M1/) | Precious Metals | M1 | 2026-07-01 → 2026-09-19 | $154,987.31 | 154.99% | 17.87% | 2.49 | 5.78 | 1,788 |
+| [XAUUSD](XAUUSD_M1/) | Precious Metals | M1 | 2026-01-01 → 2026-09-19 | $154,987.31 | 154.99% | 17.87% | 2.49 | 5.78 | 1,788 |
 
 \* Return shown relative to the $100,000 initial testing balance.
 
