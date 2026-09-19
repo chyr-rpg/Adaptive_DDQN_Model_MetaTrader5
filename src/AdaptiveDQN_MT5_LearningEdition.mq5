@@ -1,10 +1,24 @@
 //+------------------------------------------------------------------+
-//|Multi-Asset EA + Real DQN (2 hidden layers)      |
-//| Grid averaging with DQN + multi S/D zones + EMA/CCI/ATR           |
-//| UPDATED: Multi-symbol universe (FX / Metals / CFDs)               |
-//| UPDATED: Uses BaseTF instead of PERIOD_CURRENT for multi-symbol   |
+//| Adaptive DQN for MetaTrader 5 - Learning Edition                 |
+//|                                                                  |
+//| Public educational implementation of the foundational neural     |
+//| reinforcement-learning architecture used in Adaptive-DDQN-MT5.   |
+//|                                                                  |
+//| Includes:                                                        |
+//|  - Native MQL5 DQN with two hidden layers                        |
+//|  - HOLD / BUY / SELL action space                                |
+//|  - Epsilon-greedy learning                                       |
+//|  - Multi-asset state construction                                |
+//|  - Volatility / HTF / supply-demand features                     |
+//|  - Risk-aware reward shaping                                     |
+//|  - Persistent neural-network state                               |
+//|  - Visual Strategy Tester learning monitor                       |
+//|                                                                  |
+//| The current full research implementation is maintained privately.|
+//| See the public repository documentation for architecture details.|
 //+------------------------------------------------------------------+
-#property copyright "2025, CYR"
+#property copyright "2025-2026, Chen Yurui"
+#property version   "1.10"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -171,9 +185,13 @@ input int             HTF_ATR_Period     = 14;
 input double          HTF_ATR_ScalePoints= 2000.0;
 
 //--- Performance / viz
-input string PerformanceSettings = "==== Performance / visualization ====";
-input bool   DrawZonesOnChart    = true;
-input bool   VerboseLogging      = false;
+input string PerformanceSettings  = "==== Performance / visualization ====";
+input bool   DrawZonesOnChart     = true;
+input bool   VerboseLogging       = false;
+
+//--- Learning dashboard
+input bool   ShowLearningDashboard = true;
+input string DashboardSymbol       = "";   // blank = chart symbol / first available
 
 //==================================================================
 //  INTERNAL EA VIRTUAL EQUITY STATE
@@ -189,6 +207,16 @@ double   currentEpsilon       = 0.0;
 bool     isTraining           = true;
 double   totalReward          = 0.0;
 int      episodeCount         = 0;
+
+//==================================================================
+//  LEARNING DASHBOARD STATE
+//==================================================================
+int    gLastSelectedAction[MAX_SYMBOLS];
+bool   gLastActionExploratory[MAX_SYMBOLS];
+bool   gHasActionDecision[MAX_SYMBOLS];
+double gLastQHold[MAX_SYMBOLS];
+double gLastQBuy[MAX_SYMBOLS];
+double gLastQSell[MAX_SYMBOLS];
 
 //==================================================================
 //  REAL DQN NETWORK STRUCTURE (TWO HIDDEN LAYERS)
@@ -944,18 +972,48 @@ void DQNUpdate(int symIdx, double &state[], int action, double reward, double &n
 
 int DQNSelectAction(int symIdx, double &state[])
 {
-   if((double)MathRand()/32767.0 < currentEpsilon)
-      return MathRand() % ActionCount;
+   bool exploring =
+      ((double)MathRand()/32767.0 < currentEpsilon);
 
+   // Always snapshot the policy Q-values that existed at decision time.
+   // This keeps the visual dashboard aligned with the action that was
+   // actually selected, even if a training update occurs later in the tick.
    double q[];
    DQNForward(symIdx,state,q);
 
-   int best=0;
-   double maxQ=q[0];
-   for(int a=1;a<ActionCount;a++)
-      if(q[a]>maxQ){ maxQ=q[a]; best=a; }
+   gLastQHold[symIdx]=(ArraySize(q)>0 ? q[0] : 0.0);
+   gLastQBuy[symIdx] =(ArraySize(q)>1 ? q[1] : 0.0);
+   gLastQSell[symIdx]=(ArraySize(q)>2 ? q[2] : 0.0);
 
-   return best;
+   int action=0;
+
+   if(exploring)
+   {
+      action = MathRand() % ActionCount;
+      gLastActionExploratory[symIdx] = true;
+   }
+   else
+   {
+      int best=0;
+      double maxQ=q[0];
+
+      for(int a=1;a<ActionCount;a++)
+      {
+         if(q[a]>maxQ)
+         {
+            maxQ=q[a];
+            best=a;
+         }
+      }
+
+      action=best;
+      gLastActionExploratory[symIdx] = false;
+   }
+
+   gLastSelectedAction[symIdx] = action;
+   gHasActionDecision[symIdx] = true;
+
+   return action;
 }
 
 bool SaveDQNForSymbol(int symIdx, string filename)
@@ -1822,6 +1880,165 @@ void ManagePairWithDQN(string symbol,int symIdx,int &positionsCount,CArrayDouble
 }
 
 //==================================================================
+//  LEARNING DASHBOARD
+//==================================================================
+string DashboardActionName(int action)
+{
+   if(action==1) return "BUY";
+   if(action==2) return "SELL";
+   return "HOLD";
+}
+
+int GetDashboardSymbolIndex()
+{
+   if(gSymbolCount<=0)
+      return -1;
+
+   // Explicit dashboard symbol if supplied
+   if(StringLen(DashboardSymbol)>0)
+   {
+      int idx=SymbolIndex(DashboardSymbol);
+      if(idx>=0)
+         return idx;
+   }
+
+   // Prefer the chart symbol
+   int chartIdx=SymbolIndex(_Symbol);
+   if(chartIdx>=0)
+      return chartIdx;
+
+   // Otherwise use the first symbol in the active universe
+   return 0;
+}
+
+void UpdateLearningDashboard()
+{
+   if(!ShowLearningDashboard)
+   {
+      Comment("");
+      return;
+   }
+
+   // Refresh positions so the monitor reflects any order opened/closed
+   // earlier in the current tick.
+   CountOpenPositions();
+
+   int symIdx=GetDashboardSymbolIndex();
+   if(symIdx<0 || symIdx>=gSymbolCount)
+      return;
+
+   string symbol=gSymbols[symIdx];
+
+   // Build the current state for contextual diagnostics such as ATR.
+   double state[];
+   GetCurrentState(
+      symbol,
+      gPositionsCount[symIdx],
+      gTrades[symIdx],
+      state
+   );
+
+   // Display the Q-values that existed when the most recent action was
+   // selected, not values recomputed after a possible training update.
+   double qHold=gLastQHold[symIdx];
+   double qBuy =gLastQBuy[symIdx];
+   double qSell=gLastQSell[symIdx];
+
+   // Equity and drawdown
+   double equity=GetEAEquity();
+
+   double ddPct=0.0;
+   if(maxEquity>1e-9 && equity<maxEquity)
+      ddPct=100.0*(maxEquity-equity)/maxEquity;
+
+   // Reward statistics
+   double avgReward=0.0;
+   if(episodeCount>0)
+      avgReward=totalReward/(double)episodeCount;
+
+   // Latest selected action
+   int action=gLastSelectedAction[symIdx];
+   string actionName=DashboardActionName(action);
+
+   string actionSource=
+      (gLastActionExploratory[symIdx]
+       ? "EXPLORATION"
+       : "POLICY");
+
+   string actionLine;
+   if(gHasActionDecision[symIdx])
+      actionLine=actionName + " [" + actionSource + "]";
+   else
+      actionLine="WAITING FOR FIRST DECISION";
+
+   string mode=
+      (isTraining ? "TRAINING" : "INFERENCE");
+
+   // ATR ratio is state feature 6 in the public learning edition when present.
+   double atrRatio=1.0;
+   if(ArraySize(state)>6)
+      atrRatio=state[6];
+
+   string dashboard="";
+
+   dashboard += "ADAPTIVE DQN - LEARNING MONITOR\n";
+   dashboard += "----------------------------------------\n";
+
+   dashboard +=
+      "Symbol: " + symbol +
+      "   TF: " + EnumToString(BaseTF) + "\n";
+
+   dashboard +=
+      "Mode: " + mode +
+      "   Epsilon: " +
+      DoubleToString(currentEpsilon,4) + "\n";
+
+   dashboard += "----------------------------------------\n";
+
+   dashboard += "Q(HOLD): " + DoubleToString(qHold,4) + "\n";
+   dashboard += "Q(BUY) : " + DoubleToString(qBuy,4) + "\n";
+   dashboard += "Q(SELL): " + DoubleToString(qSell,4) + "\n";
+
+   dashboard +=
+      "\nAction: " +
+      actionLine + "\n";
+
+   dashboard += "----------------------------------------\n";
+
+   dashboard +=
+      "Episodes: " +
+      IntegerToString(episodeCount) + "\n";
+
+   dashboard +=
+      "Total Reward: " +
+      DoubleToString(totalReward,3) + "\n";
+
+   dashboard +=
+      "Avg Reward: " +
+      DoubleToString(avgReward,3) + "\n";
+
+   dashboard += "----------------------------------------\n";
+
+   dashboard +=
+      "EA Equity: $" +
+      DoubleToString(equity,2) + "\n";
+
+   dashboard +=
+      "Drawdown: " +
+      DoubleToString(ddPct,2) + "%\n";
+
+   dashboard +=
+      "Open Positions: " +
+      IntegerToString(gPositionsCount[symIdx]) + "\n";
+
+   dashboard +=
+      "ATR Ratio: " +
+      DoubleToString(atrRatio,3) + "\n";
+
+   Comment(dashboard);
+}
+
+//==================================================================
 //  INIT / DEINIT
 //==================================================================
 int OnInit()
@@ -1841,6 +2058,14 @@ int OnInit()
       gPositionsCount[i]=0;
       gTrades[i].Clear();
       gFirstTradeTime[i]=0;
+
+      // Dashboard state
+      gLastSelectedAction[i]=0;
+      gLastActionExploratory[i]=false;
+      gHasActionDecision[i]=false;
+      gLastQHold[i]=0.0;
+      gLastQBuy[i]=0.0;
+      gLastQSell[i]=0.0;
 
       gLastBarTime[i]=0;
       gD1LastBarTime[i]=0;
@@ -1891,6 +2116,8 @@ int OnInit()
 
 void OnDeinit(const int reason)
 {
+   Comment("");
+
    if(UseDQN && SaveQTable)
    {
       string eaName=MQLInfoString(MQL_PROGRAM_NAME);
@@ -1933,6 +2160,7 @@ void OnTick()
    {
       if(VerboseLogging) Print("Equity stop triggered (virtual EA equity). Closing all.");
       CloseAllPositions();
+      UpdateLearningDashboard();
       return;
    }
 
@@ -1952,7 +2180,10 @@ void OnTick()
    }
 
    if(CheckCCIExit())
+   {
+      UpdateLearningDashboard();
       return;
+   }
 
    TrailingStop();
    CheckTakeProfit();
@@ -1976,6 +2207,7 @@ void OnTick()
       if(UseCorrelation && !CheckCorrelation())
       {
          if(VerboseLogging) Print("Correlation condition failed. No new positions.");
+         UpdateLearningDashboard();
          return;
       }
 
@@ -1984,5 +2216,7 @@ void OnTick()
          ManagePair(gSymbols[i], gPositionsCount[i], gTrades[i], gMagics[i], gFirstTradeTime[i]);
       }
    }
+
+   UpdateLearningDashboard();
 }
 //+------------------------------------------------------------------+
