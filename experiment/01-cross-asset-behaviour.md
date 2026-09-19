@@ -93,9 +93,9 @@ These results should therefore not yet be interpreted as frozen out-of-sample va
 
 Individual reports are available under:
 
-- [EURUSD — M5](../tested_assets/EURUSD_M5/)
-- [SP500 — M15](../tested_assets/SP500_M15/)
-- [XAUUSD — M1](../tested_assets/XAUUSD_M1/)
+- [EURUSD — M5](../testedassets/eurusd/)
+- [SP500 — M15](../testedassets/SP500/)
+- [XAUUSD — M1](../testedassets/xauusd/)
 
 ---
 
