@@ -1,0 +1,95 @@
+; saved on 2026.09.19 10:56:20
+; this file contains input parameters for testing/optimizing AdaptiveDQN_MT5_LearningEdition expert advisor
+; to use it in the strategy tester, click Load in the context menu of the Inputs tab
+;
+MaxZonesTracked=50||50||1||500||N
+SymbolsSettings===== Symbols / Universe ====
+SymbolMode=0||0||0||2||N
+SymbolsList=EURUSD,GBPUSD,XAUUSD,US30
+BaseMagic=220111||220111||1||2201110||N
+TFSettings===== Timeframe settings ====
+BaseTF=0||0||0||49153||N
+General===== General settings ====
+Lots=0.1||0.01||0.001000||0.100000||N
+LotExponent=1.4||1.4||0.140000||14.000000||N
+MaxTrades=12||10||1||100||N
+TakeProfit=10000||100||1||1000||N
+StopLoss=10000||0||1||10||N
+Slippage=30||30||1||300||N
+SymbolSettings===== Q/DQN settings ====
+QTablePrefix=
+DynamicSettings===== Dynamic grid / channel settings ====
+UseDynamicPips=true||false||0||true||N
+DefaultPips=120||120||1||1200||N
+Depth=24||24||1||240||N
+PipsFactor=1||3.0||0.300000||30.000000||N
+IndicatorSettings===== Indicator settings ====
+RSI_Period=14||14||1||140||N
+RSI_Minimum=30.0||30.0||3.000000||300.000000||N
+RSI_Maximum=70.0||70.0||7.000000||700.000000||N
+UseCCI=false||false||0||true||N
+CCI_Period=55||55||1||550||N
+CCI_Level=500||500||1||5000||N
+ExitSettings===== Exit & risk settings ====
+UseTrailingStop=false||false||0||true||N
+TrailStart=100||100||1||1000||N
+TrailStop=100||100||1||1000||N
+UseEquityStop=false||false||0||true||N
+EquityRiskPercent=20.0||20.0||2.000000||200.000000||N
+BudgetSettings===== Virtual equity budget ====
+EquityBudget=100000||1000.0||100.000000||10000.000000||N
+CorrelationSettings===== Correlation filter settings ====
+UseCorrelation=true||false||0||true||N
+MinCorrelation=0.7||0.7||0.070000||7.000000||N
+CorrelationPeriod=50||50||1||500||N
+DQNSettings===== RL control settings ====
+UseDQN=true||false||0||true||N
+StateDimension=10||10||1||100||N
+ActionCount=3||3||1||30||N
+ExplorationRate=0.3||0.3||0.030000||3.000000||N
+ExplorationDecay=0.995||0.995||0.099500||9.950000||N
+MinExplorationRate=0.01||0.01||0.001000||0.100000||N
+TrainingFreq=10||10||1||100||N
+SaveQTable=true||false||0||true||N
+DQNNetSettings===== Real DQN network settings ====
+HiddenSize=16||16||1||160||N
+HiddenSize2=16||16||1||160||N
+DQNLearningRate=0.001||0.001||0.000100||0.010000||N
+DQNGamma=0.95||0.95||0.095000||9.500000||N
+UseInputNorm=false||false||0||true||N
+RegimeSettings===== Volatility / ATR settings ====
+ATR_FastPeriod=14||14||1||140||N
+ATR_SlowPeriod=100||100||1||1000||N
+RewardSettings===== RL reward shaping settings ====
+EquityRewardScale=50.0||50.0||5.000000||500.000000||N
+DrawdownPenaltyScale=10.0||10.0||1.000000||100.000000||N
+TrendPenaltyThreshold=1.0||1.0||0.100000||10.000000||N
+TrendPenaltyFactor=5.0||5.0||0.500000||50.000000||N
+RegimeWeightSettings===== RL regime weighting ====
+ExtremeRewardBoost=3.0||3.0||0.300000||30.000000||N
+MildRewardScale=0.5||0.5||0.050000||5.000000||N
+SeparateExtremeStates=true||false||0||true||N
+TrainingSettings===== Training mode ====
+TrainingMode=true||false||0||true||N
+ZoneSettings===== Retest Supply/Demand zone settings ====
+MinZoneBaseBars=3||3||1||30||N
+MaxZoneBaseBars=8||8||1||80||N
+ZoneMaxHeightPoints=300.0||300.0||30.000000||3000.000000||N
+ZoneExtendBars=200||200||1||2000||N
+D1TrendSettings===== D1 EMA trend settings ====
+D1_EMA_Period=100||100||1||1000||N
+D1_SlopeLookbackDays=20||20||1||200||N
+D1_SideLookbackDays=60||60||1||600||N
+D1_StrongTrendDistance=1.0||1.0||0.100000||10.000000||N
+D1_MaxSideDurationDays=60.0||60.0||6.000000||600.000000||N
+D1_MaxGridWidenFactor=3.0||3.0||0.300000||30.000000||N
+HTFTrendSettings===== HTF trend settings (CCI/ATR) ====
+HTF_Timeframe=16388||0||0||49153||N
+HTF_CCI_Period=55||55||1||550||N
+HTF_ATR_Period=14||14||1||140||N
+HTF_ATR_ScalePoints=2000.0||2000.0||200.000000||20000.000000||N
+PerformanceSettings===== Performance / visualization ====
+DrawZonesOnChart=true||false||0||true||N
+VerboseLogging=false||false||0||true||N
+ShowLearningDashboard=true||false||0||true||N
+DashboardSymbol=
