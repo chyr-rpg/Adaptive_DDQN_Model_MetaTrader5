@@ -83,6 +83,10 @@ Danger Events
 This is important because two assets may produce similar returns while exposing the system to very different levels of risk.
 
 ---
+## Memory 
+Each round of testing the system via MetaTrader 5 will generate a file containing a list memory data in .dat format. 
+The system with memory will adapt trading behaviour.
+The memory is usually stored in MetaTrader agent folder such as C:\Users\NAME\AppData\Roaming\MetaQuotes\Tester\9AB4B7F4EBEA1C4D5E30FED21F54ABCE\Agent-127.0.0.1-3000\MQL5\Files
 
 ## Example Interpretation
 
