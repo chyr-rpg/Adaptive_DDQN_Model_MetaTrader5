@@ -115,8 +115,8 @@ The current research architecture supplements learned action values with histori
 
 ## System Architecture
 
-
 At a high level, the current research system follows:
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/41c7bd77-a75b-496d-85b6-b56dce50be7b" />
 
 ```text
 Market Environment
