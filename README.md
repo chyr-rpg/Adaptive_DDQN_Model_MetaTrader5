@@ -6,7 +6,7 @@ Adaptive-DDQN-MT5 is a self-contained reinforcement-learning research project im
 
 The project explores how a trading agent can learn from market experience, retain both successful and adverse trading episodes, recognise changing market regimes, and adapt future decisions through persistent memory.
 
-> **Research focus:** studying adaptive decision-making and reinforcement learning inside the MetaTrader 5 environment rather than building a fully unattended 24/5 trading robot.
+> **Research focus:** studying adaptive decision-making and reinforcement learning inside the MetaTrader 5 environment with automatic trading system.
 
 ---
 
