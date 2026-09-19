@@ -396,40 +396,6 @@ No permission is granted to redistribute, sublicense, sell or incorporate propri
 
 ---
 
-## Current Repository Structure
-
-```text
-Adaptive-DDQN-MT5/
-│
-├── README.md
-│
-├── .gitignore
-│
-├── src/
-│   └── AdaptiveDQN_MT5_LearningEdition.mq5
-│
-├── doc/
-│   ├── architecture.md
-│   ├── learning-system.md
-│   ├── memory-system.md
-│   └── limitations.md
-│
-├── assets/
-│   ├── system-architecture.png
-│   ├── memory-architecture.png
-│   └── strategy-tester-learning.gif
-│
-├── presets/
-│   └── visual-training-demo.set
-│
-└── experiments/
-    └── 01-policy-evolution.md
-```
-
-Some planned files may be added as the research documentation develops.
-
----
-
 ## Disclaimer
 
 This repository is provided for research, educational and technical experimentation purposes.
