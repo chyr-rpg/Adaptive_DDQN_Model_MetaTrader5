@@ -1,0 +1,466 @@
+; saved on 2026.09.19 09:31:41
+; this file contains input parameters for testing/optimizing DDQN_1.5_zscore expert advisor
+; to use it in the strategy tester, click Load in the context menu of the Inputs tab
+;
+MaxZonesTracked=50||50||1||500||N
+General===== General settings ====
+InpMagic=220111||220111||1||2201110||N
+Lots=5||0.01||0.001000||0.100000||N
+LotExponent=1.4||1.4||0.140000||14.000000||N
+MaxTrades=10||10||1||100||N
+UseDeepBasketStrongFirstTrade=true||false||0||true||N
+DeepBasketStrongFirstTradeMinClosed=4||4||1||40||N
+DeepBasketStrongFirstTradeMult=1.5||2.0||0.200000||20.000000||N
+ChannelCloseAlpha=0.3||0.3||0.030000||3.000000||N
+UseHybridBasketTP=true||false||0||true||N
+LegacyTakeProfitPts=500||100||1||1000||N
+BasketTPDepthFactor=0.2||0.2||0.020000||2.000000||N
+BasketTPMinFactor=0.05||0.15||0.015000||1.500000||N
+Slippage=30||30||1||300||N
+BaseTFSettings===== Base timeframe (EA logic) ====
+BaseTF=0||0||0||49153||N
+GridSettings===== Grid settings (single-step BaseTF) ====
+UseDynamicPips=true||false||0||true||N
+DefaultPips=120||120||1||1200||N
+Depth=30||24||1||240||N
+PipsFactor=1||3.0||0.300000||30.000000||N
+GridRangeSmooth=0.3||0.3||0.030000||3.000000||N
+UseStdevGridExpansion=true||false||0||true||N
+GridStdevCoeff=0.5||0.35||0.035000||3.500000||N
+GridStdevMaxSigmaMult=2.0||2.0||0.200000||20.000000||N
+GridStdevStartPosition=4||4||1||40||N
+GridStdevMaxPosition=10||10||1||100||N
+GridWidthStatsBars=100||100||1||1000||N
+GridRollingMeanMaxWeight=0.75||0.75||0.075000||7.500000||N
+ExtremeDDMoneyTrigger=3000.0||3000.0||300.000000||30000.000000||N
+ExtremeDDHoursTrigger=2||2||1||20||N
+ShowGridStatusPanel=true||false||0||true||N
+GridPanelCorner=0||0||1||10||N
+GridPanelX=10||10||1||100||N
+GridPanelY=20||20||1||200||N
+IndicatorSettings===== Indicator settings (BaseTF) ====
+RSI_Period=14||14||1||140||N
+UseCCI=false||false||0||true||N
+CCI_Period=55||55||1||550||N
+CCI_Level=500||500||1||5000||N
+HTFFeatures===== Optional HTF features ====
+UseH1Features=true||false||0||true||N
+H1_TF=16385||0||0||49153||N
+UseH4Features=true||false||0||true||N
+H4_TF=16388||0||0||49153||N
+EMA_Period=50||50||1||500||N
+MACD_Fast=12||12||1||120||N
+MACD_Slow=26||26||1||260||N
+MACD_Signal=9||9||1||90||N
+RVI_Period=14||14||1||140||N
+ATRSettings===== ATR settings ====
+ATR_FastPeriod=14||14||1||140||N
+ATR_SlowPeriod=100||100||1||1000||N
+ExitSettings===== Exit & risk settings ====
+UseTrailingStop=false||false||0||true||N
+TrailStart=100||100||1||1000||N
+TrailStop=100||100||1||1000||N
+UseEquityStop=false||false||0||true||N
+EquityRiskPercent=20.0||20.0||2.000000||200.000000||N
+UseEquityLossStop=false||false||0||true||N
+EquityLossStopAmount=4900.0||4900.0||490.000000||49000.000000||N
+EquityLossStopClosePositions=true||false||0||true||N
+EquityLossStopCooldownSeconds=1||1||1||10||N
+GlobalWatchdogSettings===== Global account watchdog ====
+UseGlobalAccountWatchdog=true||false||0||true||N
+WatchAllAccountPositions=false||false||0||true||N
+WatchdogMagicMin=220100||220100||1||2201000||N
+WatchdogMagicMax=220199||220199||1||2201990||N
+ProfitPauseSettings===== Profit pause after profit target ====
+UseProfitPause=false||false||0||true||N
+ProfitPauseTargetAmount=300.0||300.0||30.000000||3000.000000||N
+ProfitPauseDurationHours=24||24||1||240||N
+BudgetSettings===== Virtual equity budget ====
+EquityBudget=100000.0||100000.0||10000.000000||1000000.000000||N
+UsePerSymbolVirtualBudget=true||false||0||true||N
+DQNSettings===== DQN settings ====
+UseDQN=true||false||0||true||N
+ActionCount=3||3||1||30||N
+ExplorationRate=0.3||0.3||0.030000||3.000000||N
+ExplorationDecay=0.998||0.998||0.099800||9.980000||N
+MinExplorationRate=0.02||0.02||0.002000||0.200000||N
+TrainingFreq=10||10||1||100||N
+SaveQTable=true||false||0||true||N
+DQNNetSettings===== DQN network ====
+HiddenSize=36||36||1||360||N
+HiddenSize2=18||18||1||180||N
+DQNLearningRate=0.001||0.001||0.000100||0.010000||N
+DQNGamma=0.95||0.95||0.095000||9.500000||N
+UseInputNorm=false||false||0||true||N
+BranchEncoderMinWidth=6||6||1||60||N
+BranchEncoderH1Cap=64||64||1||640||N
+BranchEncoderH2Cap=32||32||1||320||N
+DDQNBranchSettings===== DDQN branch / timeframe scaffold ====
+UseStateV2SelfAwareness=true||false||0||true||N
+StateNormalizationL2=true||false||0||true||N
+UseBranchScaffold=true||false||0||true||N
+TF_EXEC=0||0||0||49153||N
+TF_MID=15||0||0||49153||N
+TF_LONG=16385||0||0||49153||N
+TF_STRUCT_EXT=16388||0||0||49153||N
+UseTFExecFeatures=true||false||0||true||N
+UseTFMidFeatures=true||false||0||true||N
+UseTFLongFeatures=true||false||0||true||N
+UseTFStructExtFeatures=false||false||0||true||N
+UseBasketBranch=true||false||0||true||N
+UseIndicatorBranch=true||false||0||true||N
+UseVolatilityBranch=true||false||0||true||N
+UseStructureBranch=true||false||0||true||N
+UseZoneCandleBranch=true||false||0||true||N
+BasketAgeNormBars=288||288||1||2880||N
+StateDistAtrClamp=8.0||8.0||0.800000||80.000000||N
+StateBudgetRatioClamp=5.0||5.0||0.500000||50.000000||N
+StructLookbackExec=24||24||1||240||N
+StructLookbackMid=24||24||1||240||N
+StructLookbackLong=24||24||1||240||N
+StructDistClampAtr=8.0||8.0||0.800000||80.000000||N
+StructAmpClampAtr=12.0||12.0||1.200000||120.000000||N
+StructHistoryBarsExec=2880||2880||1||28800||N
+StructHistoryBarsMid=960||960||1||9600||N
+StructHistoryBarsLong=720||720||1||7200||N
+StructMaxSwingsPerTF=80||80||1||800||N
+SwingReversalAtrMult=1.25||1.25||0.125000||12.500000||N
+UseDoubleDQN=true||false||0||true||N
+UseHuberLoss=true||false||0||true||N
+HuberDelta=1.0||1.0||0.100000||10.000000||N
+UseGradientClipping=true||false||0||true||N
+GradientClipValue=1.0||1.0||0.100000||10.000000||N
+RegimeBankSettings===== Multi-regime DQN bank (3 models) ====
+UseRegimeBank=true||false||0||true||N
+TrainAllRegimes=true||false||0||true||N
+TrainAllRegimesWarmupOnly=true||false||0||true||N
+RegimeWarmupReplayCount=1500||1500||1||15000||N
+UseSoftRegimeInference=true||false||0||true||N
+RegimeInferenceBlendWidth=0.22||0.22||0.022000||2.200000||N
+DangerRegimeMatchBonus=0.08||0.08||0.008000||0.800000||N
+DangerRegimeMismatchPenalty=0.05||0.05||0.005000||0.500000||N
+RegimeLowThresh=0.85||0.85||0.085000||8.500000||N
+RegimeHighThresh=1.25||1.25||0.125000||12.500000||N
+RewardSettings===== DDQN reward architecture (risk-first) ====
+RewardV2BasketProfitScale=1.0||1.0||0.100000||10.000000||N
+RewardV2RecoveryQualityScale=1.0||1.0||0.100000||10.000000||N
+RewardV2ProfitToMaxDDScale=1.1||1.1||0.110000||11.000000||N
+RewardV2OneRoundBonus=1.5||1.5||0.150000||15.000000||N
+RewardV2CleanCycleBonus=0.9||0.9||0.090000||9.000000||N
+RewardV2CleanCycleMaxDD=0.02||0.02||0.002000||0.200000||N
+UseQualityAdaptiveEntry=true||false||0||true||N
+RewardV2ReversalPenaltyScale=0.7||0.7||0.070000||7.000000||N
+RewardV2OpenBaseCost=0.08||0.08||0.008000||0.800000||N
+RewardV2AddPenaltyScale=0.15||0.15||0.015000||1.500000||N
+RewardV2AddPenaltyQuadratic=0.05||0.05||0.005000||0.500000||N
+RewardV2DeepBasketStartPositions=4||4||1||40||N
+RewardV2DeepBasketPenaltyScale=0.6||0.6||0.060000||6.000000||N
+RewardV2AgingAddPenaltyScale=0.12||0.12||0.012000||1.200000||N
+RewardV2FailedBasketPenaltyScale=0.65||0.65||0.065000||6.500000||N
+RewardV2DDPenaltyScale=1.8||1.8||0.180000||18.000000||N
+RewardV2EpisodeMaxDDPenaltyScale=3.8||3.8||0.380000||38.000000||N
+RewardV2DangerPenaltyScale=1.0||1.0||0.100000||10.000000||N
+RewardV2MarginPenaltyScale=0.85||0.85||0.085000||8.500000||N
+RewardV2AgePenaltyPerDay=0.14||0.14||0.014000||1.400000||N
+RewardV2RewardClamp=10.0||10.0||1.000000||100.000000||N
+UseArchiveAwareReward=true||false||0||true||N
+ArchiveRewardScanLimit=600||600||1||6000||N
+RewardV2ArchiveOpenRiskPenaltyScale=0.2||0.2||0.020000||2.000000||N
+RewardV2ArchiveCloseRiskPenaltyScale=1.1||1.1||0.110000||11.000000||N
+RewardV2ArchiveCleanBonusScale=0.45||0.45||0.045000||4.500000||N
+RewardV2ArchivePatternPenaltyScale=0.55||0.55||0.055000||5.500000||N
+RewardV2ArchiveRegimePenaltyScale=0.35||0.35||0.035000||3.500000||N
+RewardV2RiskyProfitPenaltyScale=1.3||1.3||0.130000||13.000000||N
+ArchiveLiveSettings===== Archive live similarity / retrieval ====
+UseArchiveLiveSimilarity=true||false||0||true||N
+ArchiveLiveScanLimit=800||800||1||8000||N
+ArchiveLiveBlendWeight=0.18||0.18||0.018000||1.800000||N
+ArchiveLiveMinBlendWeight=0.05||0.05||0.005000||0.500000||N
+ArchiveLiveRecentHalfLifeDays=14.0||14.0||1.400000||140.000000||N
+ArchiveLivePatternCautionScale=0.18||0.18||0.018000||1.800000||N
+ArchiveLiveRegimeCautionScale=0.14||0.14||0.014000||1.400000||N
+UseArchiveAddRiskGate=false||false||0||true||N
+ArchiveAddRiskGateMinPositions=4||4||1||40||N
+ArchiveAddRiskGateThreshold=2.3||2.3||0.230000||23.000000||N
+ArchiveAddRiskGateCleanOffset=0.5||0.5||0.050000||5.000000||N
+UseEfficientPeriodLiveSupport=true||false||0||true||N
+EfficientPeriodLiveSupportScale=0.16||0.16||0.016000||1.600000||N
+DeepSequenceAddRiskScale=0.16||0.16||0.016000||1.600000||N
+DecisionSupportSettings===== Unified live decision support ====
+UseDecisionSupportCache=true||false||0||true||N
+DecisionSupportRefreshBars=1||1||1||10||N
+SmartAddGateSettings===== Smart basket add gate ====
+UseSmartAddGate=true||false||0||true||N
+AddGateRiskWidenThreshold=0.5||0.5||0.050000||5.000000||N
+AddGateRiskBlockThreshold=0.74||0.74||0.074000||7.400000||N
+AddGateSpacingMaxMult=2.2||2.2||0.220000||22.000000||N
+AddGateLotMinScale=0.35||0.35||0.035000||3.500000||N
+AddGateAgeSoftDays=1.5||1.5||0.150000||15.000000||N
+RegimeWeightSettings===== Regime weighting ====
+ExtremeRewardBoost=3.0||3.0||0.300000||30.000000||N
+MildRewardScale=0.85||0.85||0.085000||8.500000||N
+SeparateExtremeStates=true||false||0||true||N
+TrainingSettings===== Training mode ====
+TrainingMode=true||false||0||true||N
+QMemorySettings===== Persistent Q-memory ====
+UseQMemory=true||false||0||true||N
+SaveQMemory=true||false||0||true||N
+MaxQMemEntries=30000||30000||1||300000||N
+QMemMergeSim=0.97||0.97||0.097000||9.700000||N
+QMemFeatureEMA=0.1||0.1||0.010000||1.000000||N
+QMemBlendWeight=0.4||0.4||0.040000||4.000000||N
+QMemMinConfidence=0.08||0.08||0.008000||0.800000||N
+QMemPruneMinScore=0.1||0.1||0.010000||1.000000||N
+ResumeSettings===== Resume / continuation ====
+UnifiedPersistenceSettings===== Unified model / archive / replay persistence ====
+SaveArchiveMemory=true||false||0||true||N
+SaveReplayBanks=true||false||0||true||N
+SaveMainReplayBank=true||false||0||true||N
+SaveRecentReplayBank=true||false||0||true||N
+ResumeLowEpsilon=true||false||0||true||N
+LoadedEpsilonFactor=0.1||0.1||0.010000||1.000000||N
+Step2Settings===== Step 2 replay/target settings ====
+UseReplayBuffer=true||false||0||true||N
+ReplayCapacity=5000||5000||1||50000||N
+ReplayBatchSize=16||16||1||160||N
+ReplayWarmup=300||300||1||3000||N
+ReplayTrainIters=2||2||1||20||N
+TargetSyncFreq=500||500||1||5000||N
+UseTargetNet=true||false||0||true||N
+ReplayPriorityEps=0.01||0.01||0.001000||0.100000||N
+Step11Settings===== Step 11 memory/replay architecture ====
+MaxEpisodeMemory=50000||50000||1||500000||N
+MaxPatternMemory=20000||20000||1||200000||N
+MaxRegimeEventMemory=10000||10000||1||100000||N
+UseDangerReplayBank=true||false||0||true||N
+UseDeepBasketReplayBank=true||false||0||true||N
+UseEfficientReplayBank=true||false||0||true||N
+DangerReplayCapacity=30000||30000||1||300000||N
+DeepBasketReplayCapacity=40000||40000||1||400000||N
+EfficientReplayCapacity=60000||60000||1||600000||N
+RecentReplayCapacity=10000||10000||1||100000||N
+DeepBasketAddThreshold=3||3||1||30||N
+DangerReplayDDThresholdPct=0.05||0.05||0.005000||0.500000||N
+EfficientPeriodMinRewardEfficiency=0.5||0.5||0.050000||5.000000||N
+EfficientPeriodMinTrades=3||3||1||30||N
+UseRecentReplayBank=true||false||0||true||N
+UseBankAwareReplaySampling=true||false||0||true||N
+ReplaySampleWeightMain=0.46||0.46||0.046000||4.600000||N
+ReplaySampleWeightRecent=0.18||0.18||0.018000||1.800000||N
+ReplaySampleWeightDanger=0.08||0.08||0.008000||0.800000||N
+ReplaySampleWeightDeepBasket=0.08||0.08||0.008000||0.800000||N
+ReplaySampleWeightEfficient=0.2||0.2||0.020000||2.000000||N
+UseDangerBrainReplayHook=false||false||0||true||N
+DangerReplayObsAlpha=0.1||0.1||0.010000||1.000000||N
+EfficientPeriodWindowMinutes=240||240||1||2400||N
+EfficientPeriodMaxDDPct=0.04||0.04||0.004000||0.400000||N
+EfficientSegmentByContext=true||false||0||true||N
+EfficientSegmentMinPerMin=0.001||0.001||0.000100||0.010000||N
+EfficientContextBreakTolerance=0.6||0.6||0.060000||6.000000||N
+DeepSequenceEarlyBoost=1.6||1.6||0.160000||16.000000||N
+DangerReplayEarlyStateBoost=1.35||1.35||0.135000||13.500000||N
+DangerReplayLateRescueWeight=0.65||0.65||0.065000||6.500000||N
+DeepReplayLateRescueWeight=0.55||0.55||0.055000||5.500000||N
+ReplayRiskyProfitThreshold=1.25||1.25||0.125000||12.500000||N
+ReplayMatureEfficiencyBoost=0.6||0.6||0.060000||6.000000||N
+ReplayAntiPatternDecayScale=0.35||0.35||0.035000||3.500000||N
+UseReplayAwareReward=true||false||0||true||N
+ReplayRewardScanLimit=400||400||1||4000||N
+ReplayRewardHalfLifeDays=10.0||10.0||1.000000||100.000000||N
+RewardV2ReplayOpenAntiPatternScale=0.2||0.2||0.020000||2.000000||N
+RewardV2ReplayCloseAntiPatternScale=1.2||1.2||0.120000||12.000000||N
+RewardV2ReplayEfficientBonusScale=0.6||0.6||0.060000||6.000000||N
+RewardV2ReplayRecentCautionScale=0.3||0.3||0.030000||3.000000||N
+RewardV2ReplayDenseAntiPatternScale=0.35||0.35||0.035000||3.500000||N
+ReplayDiagnosticsSettings===== Replay diagnostics ====
+UseReplayDiagnostics=true||false||0||true||N
+ReplayDiagnosticsToLog=true||false||0||true||N
+ReplayDiagnosticsPrintEveryBars=24||24||1||240||N
+ReplayDiagnosticsInStatusPanel=true||false||0||true||N
+DangerBankPriorityAlpha=0.7||0.7||0.070000||7.000000||N
+DeepBankPriorityAlpha=0.65||0.65||0.065000||6.500000||N
+EfficientBankPriorityAlpha=0.6||0.6||0.060000||6.000000||N
+UseSoftTargetUpdate=true||false||0||true||N
+SoftTargetTau=0.003||0.003||0.000300||0.030000||N
+PendingSettings===== Pending transition learning ====
+UsePendingTransitions=true||false||0||true||N
+MaxPendingTransitions=128||128||1||1280||N
+UseRealPostActionTransitions=true||false||0||true||N
+PendingExpireMinutes=240||240||1||2400||N
+PendingOpenRewardScale=0.1||0.1||0.010000||1.000000||N
+PendingCloseRewardScale=1.0||1.0||0.100000||10.000000||N
+PendingGoodCloseBonus=1.0||1.0||0.100000||10.000000||N
+DenseBasketLearningSettings===== Dense basket-health feedback ====
+UseDenseBasketHealthReward=true||false||0||true||N
+DenseBasketPnLDeltaScale=28.0||28.0||2.800000||280.000000||N
+DenseBasketDDDeltaPenaltyScale=6.0||6.0||0.600000||60.000000||N
+DenseBasketDDRecoveryScale=3.0||3.0||0.300000||30.000000||N
+DenseBasketAddPenaltyScale=1.2||1.2||0.120000||12.000000||N
+DenseBasketStallAgePenaltyScale=0.1||0.1||0.010000||1.000000||N
+DenseBasketOneRoundProgressScale=0.4||0.4||0.040000||4.000000||N
+DenseBasketOpenReturnClamp=0.08||0.08||0.008000||0.800000||N
+DenseBasketRewardClamp=2.5||2.5||0.250000||25.000000||N
+AddSpacingGateSettings===== Add spacing gate ====
+UseMinAddSpacingGate=true||false||0||true||N
+MinAddSpacingPips=4.0||4.0||0.400000||40.000000||N
+MinAddSpacingATRFrac=0.08||0.08||0.008000||0.800000||N
+MinAddSpacingPricePct=0.0002||0.0002||0.000020||0.002000||N
+UseMinOpenIntervalGate=true||false||0||true||N
+MinSecondsBetweenOpens=30||30||1||300||N
+MinExecBarsBetweenOpens=1||1||1||10||N
+ZScoreRiskSettings===== Exact StatArb z-score risk guard ====
+UseZScoreRiskGuard=true||false||0||true||N
+ZScoreSymbol2=DXY
+ZScoreTF=15||0||0||49153||N
+ZScorePeriod=100||100||1||1000||N
+ZScoreExtremeThreshold=2.0||2.0||0.200000||20.000000||N
+UseSecondZScoreMarket=true||false||0||true||N
+ZScoreSymbol2_B=AUDUSD
+ZScorePeriod_B=100||100||1||1000||N
+ZScoreExtremeThreshold_B=2.0||2.0||0.200000||20.000000||N
+UseZScoreOrRule=true||false||0||true||N
+ZScoreResumeQuietBars=5||10||1||100||N
+ZScoreBlockAllTrading=true||false||0||true||N
+UseZScoreCloseSmallBasket=false||false||0||true||N
+ZScoreCloseBasketMaxTrades=2||2||1||20||N
+UseZScoreEmergencyHedge=true||false||0||true||N
+ZScoreEmergencyHedgeMagicOffset=700001||700001||1||7000010||N
+ZScoreEmergencyHedgeLotFactor=1.0||1.0||0.100000||10.000000||N
+UseRecoveryAfterEmergencyHedge=true||false||0||true||N
+RecoveryRestartQuietBars=6||6||1||60||N
+RecoveryCloseAtBreakevenOnly=true||false||0||true||N
+RecoveryCombinedCloseMoney=0.0||0.0||0.000000||0.000000||N
+Step3Settings===== Step 3 DD-event memory ====
+UseDDEventMemory=true||false||0||true||N
+SoftDDTriggerMoney=200.0||200.0||20.000000||2000.000000||N
+HardDDTriggerMoney=400.0||400.0||40.000000||4000.000000||N
+BasketsBeforeDD=15||15||1||150||N
+BasketsAfterDD=15||15||1||150||N
+BasketHistoryCapacity=5000||5000||1||50000||N
+TickTraceCapacity=100000||100000||1||1000000||N
+MaxDDEventsStored=3000||3000||1||30000||N
+MaxTicksPerEvent=6000||6000||1||60000||N
+DDEventTraceOnBars=true||false||0||true||N
+DDEventTraceUseBaseTF=true||false||0||true||N
+DDEventTraceTF=5||0||0||49153||N
+SaveDDEventMemory=true||false||0||true||N
+UseDDEventBias=true||false||0||true||N
+DDEventMinSim=0.8||0.8||0.080000||8.000000||N
+DDEventMaxEventsScan=300||300||1||3000||N
+DDEventPrePenalty=0.25||0.25||0.025000||2.500000||N
+DDEventExpandPenalty=0.7||0.7||0.070000||7.000000||N
+DDEventRecoveryBoost=0.3||0.3||0.030000||3.000000||N
+DDEventHoldBias=0.2||0.2||0.020000||2.000000||N
+DDEventSameDirPenalty=0.2||0.2||0.020000||2.000000||N
+DDEventBlendWeight=0.3||0.3||0.030000||3.000000||N
+DDEventUseCautionOnly=true||false||0||true||N
+DecisionBiasControlSettings===== DDQN primacy / subordinate bias control ====
+SubordinateBiasCapFrac=0.5||0.5||0.050000||5.000000||N
+QMemConfirmScale=0.85||0.85||0.085000||8.500000||N
+QMemConflictToHoldScale=0.9||0.9||0.090000||9.000000||N
+QMemConflictDirPenaltyScale=0.55||0.55||0.055000||5.500000||N
+DDEventDrawdownBoostScale=1.0||1.0||0.100000||10.000000||N
+DangerHoldVetoScale=1.0||1.0||0.100000||10.000000||N
+DangerDirectionalLeakScale=0.15||0.15||0.015000||1.500000||N
+ZoneSettings===== S/D zones (BaseTF) ====
+MinZoneBaseBars=3||3||1||30||N
+MaxZoneBaseBars=8||8||1||80||N
+ZoneMaxHeightPoints=300.0||300.0||30.000000||3000.000000||N
+ZoneExtendBars=200||200||1||2000||N
+MaxZonesPerBar=2||2||1||20||N
+ZoneInvalidationBufferAtr=0.1||0.1||0.010000||1.000000||N
+ZoneMinDisplacementAtr=1.2||1.2||0.120000||12.000000||N
+ZonePivotClusterBars=1||1||1||10||N
+ZoneMaxLookbackSwings=24||24||1||240||N
+ZoneNearBufferAtr=0.35||0.35||0.035000||3.500000||N
+ZoneConfluenceAtr=0.5||0.5||0.050000||5.000000||N
+SwingConfluenceAtr=0.6||0.6||0.060000||6.000000||N
+DrawSwingStructureOnChart=false||false||0||true||N
+DrawSwingZonesOnChart=false||false||0||true||N
+DrawZoneCandleFlagsOnChart=false||false||0||true||N
+FastTrainingMode=true||false||0||true||N
+FastTrainingSkipIndicatorBranch=false||false||0||true||N
+FastTrainingSkipVolatilityBranch=false||false||0||true||N
+FastTrainingSkipStructureBranch=false||false||0||true||N
+FastTrainingSkipZoneCandleBranch=false||false||0||true||N
+ReentryCooldownSeconds=60||60||1||600||N
+ReentryCooldownExecBars=2||2||1||20||N
+ForceEntryBypassesReentryCooldown=false||false||0||true||N
+UseFastBacktestStateCache=true||false||0||true||N
+SwingZoneCacheSlots=64||64||1||640||N
+UseSlowFeatureCaches=true||false||0||true||N
+CacheStructureZoneOnExecBar=true||false||0||true||N
+TrainEveryNDecisionBars=1||1||1||10||N
+FastTrainingSparseQMemory=true||false||0||true||N
+FastTrainingQMemoryRefreshDecisionBars=4||4||1||40||N
+FastTrainingQMemoryRefreshMinutes=60||60||1||600||N
+MaxDrawnSwingsPerTF=8||8||1||80||N
+MaxDrawnZonesPerTF=2||2||1||20||N
+D1TrendSettings===== D1 EMA trend ====
+D1_EMA_Period=100||100||1||1000||N
+D1_SlopeLookbackDays=20||20||1||200||N
+D1_SideLookbackDays=60||60||1||600||N
+D1_MaxSideDurationDays=60.0||60.0||6.000000||600.000000||N
+PerformanceSettings===== Performance / visualization ====
+DrawZonesOnChart=false||false||0||true||N
+VerboseLogging=false||false||0||true||N
+DangerBrainSettings===== Danger Brain (Regime + Memory) ====
+UseDangerBrain=true||false||0||true||N
+FingerprintTF=0||0||0||49153||N
+FingerprintBars=32||32||1||320||N
+T1_CautionEnter=0.55||0.55||0.055000||5.500000||N
+T1_CautionExit=0.45||0.45||0.045000||4.500000||N
+T2_DangerEnter=0.75||0.75||0.075000||7.500000||N
+T2_DangerExit=0.65||0.65||0.065000||6.500000||N
+ModeCooldownMinutes=60||60||1||600||N
+LRScale_Caution=0.3||0.3||0.030000||3.000000||N
+LRScale_Danger=0.1||0.1||0.010000||1.000000||N
+DangerBlocksNewEntries=false||false||0||true||N
+ScoreW_SimContrast=1.0||1.0||0.100000||10.000000||N
+ScoreW_Exposure=0.6||0.6||0.060000||6.000000||N
+ExposureW_Positions=0.1||0.1||0.010000||1.000000||N
+ExposureW_DD=2.0||2.0||0.200000||20.000000||N
+SaveDangerMemory=true||false||0||true||N
+DangerSmartnessSettings===== Danger smartness pack ====
+UseDeltaSimilarity=true||false||0||true||N
+SimW_DeltaFingerprint=0.7||0.7||0.070000||7.000000||N
+SimW_DeltaMiniState=0.5||0.5||0.050000||5.000000||N
+DangerActionPolicy=0||0||1||10||N
+BadEpisodeSettings===== Bad Episode Learning ====
+BadProtoMergeSim=0.96||0.96||0.096000||9.600000||N
+BadProtoFeatureEMA=0.2||0.2||0.020000||2.000000||N
+BadProtoBiasEMA=0.2||0.2||0.020000||2.000000||N
+BadBias_HoldBoost=0.7||0.7||0.070000||7.000000||N
+BadBias_AgainstPenalty=0.7||0.7||0.070000||7.000000||N
+BadBias_WithTrendBoost=0.25||0.25||0.025000||2.500000||N
+BadBias_RepeatPenalty=0.35||0.35||0.035000||3.500000||N
+SafeRecoverySettings===== Safe Recovery Learning ====
+MemoryAgingSettings===== Memory Aging / Pruning ====
+ProtoHalfLifeDays=360.0||360.0||36.000000||3600.000000||N
+MaxProtosStored=12000||12000||1||120000||N
+PruneMinKeepScore=0.1||0.1||0.010000||1.000000||N
+PruneOnDeinit=true||false||0||true||N
+MiniStateSettings===== Mini State Fingerprint ====
+UseMiniStateFingerprint=true||false||0||true||N
+SimW_PriceFingerprint=1.0||1.0||0.100000||10.000000||N
+SimW_MiniState=0.8||0.8||0.080000||8.000000||N
+ProfitRewardSettings===== Profit reward shaping ====
+ProfitReturnClamp=0.8||0.8||0.080000||8.000000||N
+ProfitRewardScale=10.0||10.0||1.000000||100.000000||N
+RecoveryQualitySettings===== Recovery quality shaping ====
+RecWinRatioScale=2.0||2.0||0.200000||20.000000||N
+RecLossCountPenalty=1.0||1.0||0.100000||10.000000||N
+RecTradesUsedPenalty=0.4||0.4||0.040000||4.000000||N
+RecQualityClamp=8.0||8.0||0.800000||80.000000||N
+PositionLearningSettings===== Per-position basket learning ====
+UsePerPositionCloseLearning=true||false||0||true||N
+LegPnLPerLotScale=0.05||0.05||0.005000||0.500000||N
+LegDistancePointsScale=0.002||0.002||0.000200||0.020000||N
+LegIndexRewardScale=0.03||0.03||0.003000||0.300000||N
+LegHoldHoursPenaltyScale=0.01||0.01||0.001000||0.100000||N
+MaxClosedLegHistory=3000||3000||1||30000||N
+ForcedEntrySettings===== Forced entry watchdog ====
+UseForcedEntryWatchdog=true||false||0||true||N
+ForcedEntryIdleMinutes=60||60||1||600||N
+ForcedEntryWindowMinutes=15||15||1||150||N
+ForcedEntryIgnoreDanger=true||false||0||true||N
