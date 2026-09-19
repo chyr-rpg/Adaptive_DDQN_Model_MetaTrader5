@@ -23,7 +23,7 @@ and Learning Stability
 
 ## Tested Asset Summary
 
-The current repository contains results for three markets:
+The current repository contains results for three markets with different setting parameters:
 
 | Asset | Asset Class | TF | Test Period | Net P/L | Return* | Equity DD | Profit Factor | Sharpe | Trades |
 | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
